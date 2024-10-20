@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press "Spacebar" to play the game
+  m_text: Press "Spacebar" to play the game.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d205cb33fd0e2c940ad61d8c353f7d6c, type: 2}
   m_sharedMaterial: {fileID: 1509160047561128392, guid: d205cb33fd0e2c940ad61d8c353f7d6c, type: 2}
