@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayersHealth health; //player health script
     public bool hasBeenDowned = false; //this ensure the player does not get stuff on objects after lossing a ballon and falls down
-    public GameObject[] balloons; //this is to hold the ballons that the player can pick up in game 
+    //public GameObject[] balloons; //this is to hold the ballons that the player can pick up in game 
 
     private Vector2 move;
     public BallonPool pool;
