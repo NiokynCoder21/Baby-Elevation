@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class StartGame : MonoBehaviour
 {
-    private void Update()
+    public void onContinue(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Space)) //when the player presses Spacebar
-        {
-            SceneManager.LoadScene("Tutorial Level 1"); // Load Tutorial Level 1
-        }
+        Continue();
+    }
+
+    public void Continue()
+    {
+        SceneManager.LoadScene("Tutorial Level 1"); // Load Tutorial Level 1
     }
 }

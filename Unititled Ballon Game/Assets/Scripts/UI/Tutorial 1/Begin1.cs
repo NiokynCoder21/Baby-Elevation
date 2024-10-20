@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Begin1 : MonoBehaviour
 {
-    void Update()
+    public void onContinue(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Space)) //when the player presses Spacebar
-        {
-            BeginGame();
-        }
+        BeginGame();
     }
 
 
