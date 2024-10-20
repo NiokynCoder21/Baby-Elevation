@@ -7,7 +7,7 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager instance; // Singleton instance
 
-    public AudioClip startSceneSong; //main menu
+    public AudioClip startSceneSong; // Song for the main menu
     public AudioClip winSceneSong;
     public AudioClip loseSceneSong;
 
@@ -27,6 +27,7 @@ public class MusicManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return; // Ensure only the original persists
         }
 
         // Get or add AudioSource component
@@ -50,25 +51,24 @@ public class MusicManager : MonoBehaviour
     // This method is called whenever a new scene is loaded
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        string sceneName = scene.name;
+
         // Handle music for specific scenes
-        if (scene.name == "MainMenu")
+        if (sceneName == "MainMenu")
         {
             PlaySceneSpecificSong(startSceneSong);
         }
-
-        else if (scene.name == "LevelCompleteScene")
+        else if (sceneName == "LevelCompleteScene")
         {
             PlaySceneSpecificSong(winSceneSong);
         }
-
-        else if (scene.name == "LevelLostScene")
+        else if (sceneName == "LevelLostScene")
         {
             PlaySceneSpecificSong(loseSceneSong);
         }
-
         else
         {
-            // If it's a level scene, start the playlist
+            // If it's a level scene, continue or start the playlist
             PlayLevelMusic();
         }
     }
@@ -76,10 +76,13 @@ public class MusicManager : MonoBehaviour
     // Plays a specific song for certain scenes
     private void PlaySceneSpecificSong(AudioClip song)
     {
-        audioSource.Stop(); // Stop any currently playing song
-        audioSource.clip = song;
-        audioSource.loop = true; // Loop scene-specific songs
-        audioSource.Play();
+        if (audioSource.clip != song) // Only change if it's a different song
+        {
+            audioSource.Stop(); // Stop the current song
+            audioSource.clip = song;
+            audioSource.loop = true; // Loop scene-specific songs
+            audioSource.Play();
+        }
     }
 
     // Plays through the level music playlist
@@ -87,7 +90,13 @@ public class MusicManager : MonoBehaviour
     {
         if (levelSongs.Length == 0) return; // If no level songs are set, return
 
-        // Play the next song in the playlist
+        // If the audio source is playing and the clip is already a level song, don't interrupt
+        if (audioSource.isPlaying && System.Array.Exists(levelSongs, song => song == audioSource.clip))
+        {
+            return; // Do not interrupt if it's already playing a level song
+        }
+
+        // Play the current song in the playlist
         audioSource.Stop(); // Stop the current song
         audioSource.clip = levelSongs[currentSongIndex];
         audioSource.loop = false; // Do not loop a single song
@@ -98,7 +107,7 @@ public class MusicManager : MonoBehaviour
     }
 
     // Coroutine to wait for the song to finish and move to the next one
-    private System.Collections.IEnumerator WaitForSongToEnd()
+    private IEnumerator WaitForSongToEnd()
     {
         yield return new WaitUntil(() => !audioSource.isPlaying); // Wait until the current song finishes
 
