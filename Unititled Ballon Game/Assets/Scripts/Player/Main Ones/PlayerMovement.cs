@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject[] balloons; //this is to hold the ballons that the player can pick up in game 
 
     private Vector2 move;
+    public bool canAirJump = true;
+
     //public BallonPool pool;
    // public Vector2[] ballonPositions;
 
@@ -44,7 +46,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            Jump();
+            if (isGrounded)
+            {
+                Jump();
+            }
+
+            if (canAirJump && !isGrounded)
+            {
+                Jump();
+            }
         }
 
     }
@@ -85,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         }*/
 
         // Deactivate balloons if they exceed the current balloonCount
+
 
         Move();
 
@@ -150,6 +161,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce); //add jump force to the player rb
         isGrounded = false; //player is not on the ground
+
+        if (canAirJump == true)
+        {
+            canAirJump = false;
+        }
     }
 
     public void getBallons(int Ballons) //a function that is made to be called on ballons the player collects 
@@ -171,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true; //the player can jump
             hasBeenDowned = false; //this is to reset the bool 
+            canAirJump = true;
         }
 
         if (collision.gameObject.CompareTag("Killer")) ///if player collides with game object with tag killer
