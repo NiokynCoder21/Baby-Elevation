@@ -1157,8 +1157,8 @@ MonoBehaviour:
   rb: {fileID: 3059504477428118131}
   jumpForce: 5
   orientation: {fileID: 764908861089656830}
-  rightForce: -5
-  leftForce: 5
+  rightForce: -3
+  leftForce: 3
   downForce: 50
   upForce: 4
   upAirGravity: 2
@@ -1187,6 +1187,7 @@ MonoBehaviour:
   - {fileID: 3714625058131837411}
   - {fileID: 6258829162709239798}
   - {fileID: 1252220268753944363}
+  canAirJump: 1
 --- !u!114 &8114369856239182294
 MonoBehaviour:
   m_ObjectHideFlags: 0

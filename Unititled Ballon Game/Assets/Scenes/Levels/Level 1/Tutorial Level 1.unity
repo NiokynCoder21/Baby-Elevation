@@ -14308,6 +14308,46 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 6543503197981132614}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_ActionId
+      value: 11adb3c0-49b0-41d9-a5e4-79518420f9cd
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_ActionName
+      value: Player/Retry[/Keyboard/r,/XInputControllerWindows/rightTrigger]
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9076294847756246586}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRetry
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RedoGame, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6985467956844717602, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7225035116265798654, guid: 7651422078eb77b48bc625e8d25bedd9, type: 3}
       propertyPath: m_Name
       value: Player
