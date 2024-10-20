@@ -779,9 +779,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yeah thousands of our citizens are now without a home. Now that does not
-    feel like victory does it. How many more of our people should suffer until it
-    is enough. Just some food for thought but on some more positive news, Rufus and
+  m_text: Thousands of our citizens left without a home. Now that does not sound
+    like a victory does it. How many more of our people should suffer until it is
+    enough. Just some food for thought but on some more positive news, Rufus and
     his team are
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d205cb33fd0e2c940ad61d8c353f7d6c, type: 2}
@@ -1177,9 +1177,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: celebrating reaching phase 1 of project Airscaper today. They will be hosting
-    a bring a kid to work day for the workers to bring their kids and apparently
-    Rufus is also bringing his child John. Who is rarely seen in public due to Rufus
-    being a provate man.
+    a bring your kid to work day, for the workers and apparently Rufus is also bringing
+    his child John. Who is rarely seen in public due to Rufus being a private man.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d205cb33fd0e2c940ad61d8c353f7d6c, type: 2}
   m_sharedMaterial: {fileID: 1509160047561128392, guid: d205cb33fd0e2c940ad61d8c353f7d6c, type: 2}
