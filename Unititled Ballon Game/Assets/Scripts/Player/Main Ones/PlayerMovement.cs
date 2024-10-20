@@ -30,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject[] balloons; //this is to hold the ballons that the player can pick up in game 
 
     private Vector2 move;
+    public BallonPool pool;
+    public Vector2[] ballonPositions;
+
+    private List<GameObject> activeBalloons = new List<GameObject>();
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -80,6 +84,23 @@ public class PlayerMovement : MonoBehaviour
             Jump(); 
         }*/
 
+        // Deactivate balloons if they exceed the current balloonCount
+
+        while (activeBalloons.Count > ballonCount)
+        {
+            GameObject balloon = activeBalloons[activeBalloons.Count - 1];
+            activeBalloons.RemoveAt(activeBalloons.Count - 1);
+            pool.ReturnBalloon(balloon); // Return balloon to the pool
+        }
+
+        // Activate balloons up to the balloonCount
+        for (int i = activeBalloons.Count; i < ballonCount; i++)
+        {
+            GameObject newBalloon = pool.GetBalloon(ballonPositions[i]);
+            activeBalloons.Add(newBalloon);
+        }
+
+
         Move();
 
         if (ballonCount > 0 && !isGrounded && !hasBeenDowned) //when the player has more zero ballons and is not on the floor and is not hasbeendowned 
@@ -87,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             AirMoveWithVelocity();
         }
 
-        for (int i = 0; i < balloons.Length; i++) 
+       /* for (int i = 0; i < balloons.Length; i++) 
         {
             if (i < ballonCount)
             {
@@ -97,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 balloons[i].SetActive(false); //this will make the relevant ballon disappear on the player 
             }
-        }
+        }*/
     }
 
     private void Start()
