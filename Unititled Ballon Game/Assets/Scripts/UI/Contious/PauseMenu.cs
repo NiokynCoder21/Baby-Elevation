@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,21 +13,23 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-    // Update is called once per frame
-    void Update()
+    public void onPause(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (context.performed)
         {
             if (GameIsPaused)
             {
                 Resume();
             }
-            else
+
+            else if(!GameIsPaused)
             {
                 Pause();
             }
         }
     }
+
+    // Update is called once per frame
 void Pause()
 {
     Debug.Log("Pause menu activated");
