@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,9 +29,32 @@ public class PlayerMovement : MonoBehaviour
     public bool hasBeenDowned = false; //this ensure the player does not get stuff on objects after lossing a ballon and falls down
     public GameObject[] balloons; //this is to hold the ballons that the player can pick up in game 
 
+    private Vector2 move;
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        move = context.ReadValue<Vector2>(); //this detects input along the vector and allows movement 
+    }
+
+    public void onJump(InputAction.CallbackContext context)
+    {
+        Jump();
+    }
+
+    public void onDrop(InputAction.CallbackContext context)
+    {
+        Drop();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
+    }
+
+
     void Update()
     {
-        if (Input.GetKey("a")) //when the player presses A
+        /*if (Input.GetKey("a")) //when the player presses A
         {
             rb.AddForce(-orientation.right * rightForce, ForceMode2D.Force); //add force to the left to allow the player to move to the left
             transform.eulerAngles = new Vector3(0, 180, 0); //rotates the player 180 on the z - this flips the sprite
@@ -40,19 +64,19 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(orientation.right * leftForce, ForceMode2D.Force); //add force to the right to allow the player to move to the right
             transform.eulerAngles = new Vector3(0, 0, 0f); //rotates the player 0 on x,y,z - this flips the sprite
-        }
+        }*/
 
-        if (Input.GetKeyDown("s") && ballonCount > 0) //when the player presses s and has more 0 ballons
+        /*if (Input.GetKeyDown("s") && ballonCount > 0) //when the player presses s and has more 0 ballons
         {
             ballonCount -= loss; //this reduces loss from balloonCount and assigns the current ballonCount
             Vector2 upwardVelocity = orientation.up * downForce * ballonCount; //slows the player down when they drop a player
-        }
+        }*/
 
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) //when the player presses space and are grounded they can jump
+        /*if (Input.GetKeyDown(KeyCode.Space) && isGrounded) //when the player presses space and are grounded they can jump
         {
             Jump(); 
-        }
+        }*/
 
         if(ballonCount > 0 && !isGrounded && !hasBeenDowned) //when the player has more zero ballons and is not on the floor and is not hasbeendowned 
         {
@@ -78,6 +102,31 @@ public class PlayerMovement : MonoBehaviour
         AudioSource audio = GetComponent<AudioSource>(); //get component audio source and store as audio
     }
 
+    public void Move()
+    {
+        if (move.x > 0)
+        {
+            rb.AddForce(-orientation.right * rightForce, ForceMode2D.Force); //add force to the left to allow the player to move to the left
+            transform.eulerAngles = new Vector3(0, 180, 0); //rotates the player 180 on the z - this flips the sprite
+        }
+
+        if (move.x < 0)
+        {
+            rb.AddForce(orientation.right * leftForce, ForceMode2D.Force); //add force to the right to allow the player to move to the right
+            transform.eulerAngles = new Vector3(0, 0, 0f); //rotates the player 0 on x,y,z - this flips the sprite
+        }
+
+    }
+
+    public void Drop()
+    {
+        if (ballonCount > 0)
+        {
+            ballonCount -= loss; //this reduces loss from balloonCount and assigns the current ballonCount
+            Vector2 upwardVelocity = orientation.up * downForce * ballonCount; //slows the player down when they drop a player
+        }
+        
+    }
 
     void AirMoveWithVelocity()
     {
@@ -144,5 +193,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-   
 }
