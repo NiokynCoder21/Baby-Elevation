@@ -1073,8 +1073,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: that hero whos destroys our city after each battle. Rufus has today reinforced
-    his idea for a future without the superhero and I stand with him. I urge you
+  m_text: that hero who destroys our city after each battle. Rufus has today reinforced
+    his idea for a future without the superhero. I stand with him and, I urge you
     all to show support because the real hero of our city needs YOU.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d205cb33fd0e2c940ad61d8c353f7d6c, type: 2}
