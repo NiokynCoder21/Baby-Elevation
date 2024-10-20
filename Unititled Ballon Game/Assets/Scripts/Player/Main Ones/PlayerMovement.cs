@@ -38,19 +38,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext context)
     {
-        Jump();
+        if (context.performed)
+        {
+            Jump();
+        }
+
     }
 
     public void onDrop(InputAction.CallbackContext context)
     {
-        Drop();
-    }
+        if (context.performed)
+        {
+            Drop();
+        }
 
-    private void FixedUpdate()
-    {
-        Move();
     }
-
 
     void Update()
     {
@@ -78,7 +80,9 @@ public class PlayerMovement : MonoBehaviour
             Jump(); 
         }*/
 
-        if(ballonCount > 0 && !isGrounded && !hasBeenDowned) //when the player has more zero ballons and is not on the floor and is not hasbeendowned 
+        Move();
+
+        if (ballonCount > 0 && !isGrounded && !hasBeenDowned) //when the player has more zero ballons and is not on the floor and is not hasbeendowned 
         {
             AirMoveWithVelocity();
         }
@@ -107,13 +111,13 @@ public class PlayerMovement : MonoBehaviour
         if (move.x > 0)
         {
             rb.AddForce(-orientation.right * rightForce, ForceMode2D.Force); //add force to the left to allow the player to move to the left
-            transform.eulerAngles = new Vector3(0, 180, 0); //rotates the player 180 on the z - this flips the sprite
+            transform.eulerAngles = new Vector3(0, 0, 0); //rotates the player 180 on the z - this flips the sprite
         }
 
         if (move.x < 0)
         {
             rb.AddForce(orientation.right * leftForce, ForceMode2D.Force); //add force to the right to allow the player to move to the right
-            transform.eulerAngles = new Vector3(0, 0, 0f); //rotates the player 0 on x,y,z - this flips the sprite
+            transform.eulerAngles = new Vector3(0, 180, 0f); //rotates the player 0 on x,y,z - this flips the sprite
         }
 
     }
